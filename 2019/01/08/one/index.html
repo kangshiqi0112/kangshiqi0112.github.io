@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="my blog">
 <meta property="og:description" content="摘要:github 博客基本使用命名正文:    emmmmmmmmmmmmmm    #设置git身份信息:    $ git config –global user.name “你的用户名”    $ git config –global user.email “你的邮箱” #发布更新博客 $ hexo d -g  #输入创建文章命令，生成一个md文件(&#x2F;blog&#x2F;source&#x2F;_posts&#x2F;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-08T02:55:22.912Z">
+<meta property="og:updated_time" content="2019-11-08T07:31:54.354Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="my blog" type="application/atom+xml">
@@ -237,6 +237,18 @@ language: zh-CN
 
 #运行hexo,在本地运行博客，结束(ctrl+c)
 $ hexo s -g
+
+
+#添加远程仓库git remote add &lt;shortname&gt; &lt;url&gt;
+$ git remote remove &lt;name&gt;
+$ git remote add origin https://github.com/kangshiqi0112/kangshiqi0112.github.io.git
+$ git remote -v
+#master创建，运行git init ，您看到的master并没有完全创建。 它不存在，因为它尚未指向任何提交。
+$ git branch
+$ git fetch 
+$ git checkout master
+$ git branch --set-upstream-to=origin/master master
+
 
 #学习搭建网站
 https://www.jianshu.com/p/189fd945f38f</code></pre>

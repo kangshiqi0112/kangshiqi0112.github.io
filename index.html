@@ -345,6 +345,18 @@ language: zh-CN
 #运行hexo,在本地运行博客，结束(ctrl+c)
 $ hexo s -g
 
+
+#添加远程仓库git remote add &lt;shortname&gt; &lt;url&gt;
+$ git remote remove &lt;name&gt;
+$ git remote add origin https://github.com/kangshiqi0112/kangshiqi0112.github.io.git
+$ git remote -v
+#master创建，运行git init ，您看到的master并没有完全创建。 它不存在，因为它尚未指向任何提交。
+$ git branch
+$ git fetch 
+$ git checkout master
+$ git branch --set-upstream-to=origin/master master
+
+
 #学习搭建网站
 https://www.jianshu.com/p/189fd945f38f</code></pre>
       
