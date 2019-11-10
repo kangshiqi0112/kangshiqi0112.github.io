@@ -21,7 +21,7 @@
     <link rel="alternative" href="/atom.xml" title="my blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+    <link rel="icon" href="/uploads/favicon.gif">
   
   <link rel="stylesheet" href="/css/style.css">
   
@@ -30,6 +30,10 @@
   <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
   <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("your_app_id", "your_app_key");</script>
+<script src="/js/Counter.js"></script>
   
 </head>
 <body>
@@ -182,6 +186,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-newdraft" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/08/newdraft/" class="article-date">
+  	<time datetime="2019-11-08T07:47:26.000Z" itemprop="datePublished">2019-11-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/08/newdraft/">
+        newdraft
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2019/11/08/newdraft/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="newdraft">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-note1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -211,7 +279,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>ss <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f634.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f634.png?v8">😴</span><br><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
+<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span> still works<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
     
@@ -219,6 +306,16 @@
       
       
       
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2019/11/08/note1/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="note1">
+         &nbsp;
+        view
+    </span>
+</div>
 
       
       <div class="clearfix"></div>
@@ -288,6 +385,16 @@
       
 
       
+        
+<div class="counter-tag counter">
+    <span id="/2019/11/08/hello-world/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="Hello World">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
       <div class="clearfix"></div>
     </div>
       
@@ -337,7 +444,7 @@
 $ hexo d -g
 
 #输入创建文章命令，生成一个md文件(/blog/source/_posts/)
-$ hexo new &quot;hello&quot;
+$ hexo new "hello"
 
 #博客语言
 language: zh-CN
@@ -357,8 +464,33 @@ $ git checkout master
 $ git branch --set-upstream-to=origin/master master
 
 
+#创建草稿
+$ hexo new draft newdraft
+$ hexo server --draft
+$ hexo publish draft newdraft
+
 #学习搭建网站
-https://www.jianshu.com/p/189fd945f38f</code></pre>
+https://www.jianshu.com/p/189fd945f38f
+https://zhuanlan.zhihu.com/p/80140564
+https://npm.taobao.org/package/hexo-filter-github-emojis</code></pre><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
     
@@ -374,6 +506,16 @@ https://www.jianshu.com/p/189fd945f38f</code></pre>
 	<a class="article-category-link" href="/categories/%E6%97%A5%E5%BF%97/">日志</a><a class="article-category-link" href="/categories/%E6%97%A5%E5%BF%97/%E4%BA%8C%E7%BA%A7%E7%9B%AE%E5%BD%95/">二级目录</a>
 	</div>
 
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2019/01/08/one/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="github-blog">
+         &nbsp;
+        view
+    </span>
+</div>
 
       
       <div class="clearfix"></div>
