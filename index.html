@@ -120,7 +120,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/aa/" style="font-size: 10px;">aa</a> <a href="/tags/other/" style="font-size: 10px;">other</a>
+						<a href="/tags/aa/" style="font-size: 10px;">aa</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python-%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">python 网络</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a>
 					</div>
 				</section>
 				
@@ -186,6 +186,263 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-数据挖掘基础阶段用到的库" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/19/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%9F%BA%E7%A1%80%E9%98%B6%E6%AE%B5%E7%94%A8%E5%88%B0%E7%9A%84%E5%BA%93/" class="article-date">
+  	<time datetime="2019-11-19T08:55:07.000Z" itemprop="datePublished">2019-11-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/19/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%9F%BA%E7%A1%80%E9%98%B6%E6%AE%B5%E7%94%A8%E5%88%B0%E7%9A%84%E5%BA%93/">
+        数据挖掘基础阶段用到的库
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Mkvirtualenv –p /user/local/bin/python3 aa  虚拟环境</li>
+<li>Which Python3 查位置</li>
+<li>中文配置：<ol>
+<li>安装字体（usr/share/fonts）</li>
+<li>删除matplotlib缓存文件#cd ~/.cache/matplotlib #rm –r *</li>
+<li>修改配置文件matplotlibrc  (backend:TkAgg    font.family:sana-serif    font.sana-serif:SimHei    Axes.unicode_minus:False)</li>
+</ol>
+</li>
+</ul>
+<h1 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h1><ol>
+<li>web版的iPython</li>
+<li>ju-Julia; py-Python; ter-R</li>
+<li>编程、写文档、记笔记、展示图表等</li>
+<li>Python –m instsll jupyter  安装（命令行）</li>
+<li>Jupyter notebook 启动（命令行） </li>
+<li>相关快捷键操作：shift+enter(运行)，esc(命令模式)，enter（编辑模式），M切换到markdown模式，z回退，tab补全代码，</li>
+<li>Cell:一对 in out会话被视作一个代码单元，称为cell</li>
+</ol>
+<h1 id="Matplotlib：专门用于开发2D图表（包括3D图表）库"><a href="#Matplotlib：专门用于开发2D图表（包括3D图表）库" class="headerlink" title="Matplotlib：专门用于开发2D图表（包括3D图表）库"></a>Matplotlib：专门用于开发2D图表（包括3D图表）库</h1><ol>
+<li>为什么使用？<ul>
+<li>数据可视化</li>
+<li>js库，D3，echarts</li>
+</ul>
+</li>
+<li>三层结构<ul>
+<li>容器层：1.画板层（Canvas） 2.画布层（Figure）：plt.figure() 3.绘图区/坐标系（axes）：plt.subplots()</li>
+<li>辅助显示层：网格、刻度、图例、标题等辅助显示，使图表清晰易懂</li>
+<li>图像层：画各种类型、风格图表</li>
+</ul>
+</li>
+<li>折线图绘制<ul>
+<li>导包，包含了一系列绘图函数import matplotlib.pyplot as plt </li>
+<li>图表保存 plt.savefig(“test1.png”)</li>
+<li>绘制画布 plt.figure()</li>
+<li>绘制折线 plt.plot(x,y)</li>
+<li>显示图例 plt.legend()</li>
+<li>设置坐标轴标签，图表标题 plt.xlabel()  plt.ylabel() plt.title()</li>
+<li>修改坐标轴刻度信息 plt.xticks() plt.yticks(y,**args)</li>
+<li>添加网格显示 plt.grid()</li>
+<li>图表显示 plt.show()</li>
+</ul>
+</li>
+</ol>
+<pre><code>import matplotlib.pyplot as plt  #导包，包含了一系列绘图函数
+%matplotlib inline  #环境，有些不需要
+import random
+x = range(60)
+y_shanghai = [random.uniform(15,18) for i in x]
+y_nanchang = [random.uniform(10,16) for i in x]
+plt.figure(figsize=(20,8),dpi=80) #设置大小和清晰度
+plt.plot(x,y_shanghai,color='r',linestyle='-.',label='shanghai')
+plt.plot(x,y_nanchang,color='b',linestyle='--',label='nanchang')
+#显示图例
+plt.legend(loc='lower left') 
+#修改坐标刻度值
+x_lable =["11点{}分".format(i) for i in x] #x轴说明
+plt.xlabel("time") #x轴标签
+plt.ylabel("temp") #y轴标签
+plt.title("picture") #图表标题
+plt.yticks(range(0,40,5))#y轴0-40，隔5
+plt.xticks(x[::5],x_lable)
+#添加网格显示
+plt.grid(True,linestyle='--',alpha=0.5)#风格和透明度，true可省略
+plt.show()#之后会释放所有图像资源</code></pre><h1 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h1><h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><h1 id="Ta-Lib-技术指标库"><a href="#Ta-Lib-技术指标库" class="headerlink" title="Ta-Lib    技术指标库"></a>Ta-Lib    技术指标库</h1><h1 id="Tables-hdf5"><a href="#Tables-hdf5" class="headerlink" title="Tables   hdf5"></a>Tables   hdf5</h1><h1 id="Jupyter"><a href="#Jupyter" class="headerlink" title="Jupyter"></a>Jupyter</h1><pre><code>import matplotlib.pyplot as plt  #导包，包含了一系列绘图函数
+%matplotlib inline  #环境，有些不需要
+plt.figure()  #创建画布
+plt.plot([1,0,9],[4,5,6])  #（1,4）（0，5）（9,6）
+plt.show()  #呈现</code></pre><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+	</div>
+
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2019/11/19/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%9F%BA%E7%A1%80%E9%98%B6%E6%AE%B5%E7%94%A8%E5%88%B0%E7%9A%84%E5%BA%93/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="数据挖掘基础阶段用到的库">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-socket基本原理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/11/socket%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" class="article-date">
+  	<time datetime="2019-11-11T00:28:50.000Z" itemprop="datePublished">2019-11-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/11/socket%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">
+        socket基本原理
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Socket是一种通用的网络编程接口，（ip地址+端口号 识别），基于TCP、UDP   (类型)</p>
+<ul>
+<li>TCP编程<ol>
+<li>客户端，服务端，角色可互换</li>
+<li>客户端：socket()-&gt;connect()-&gt;write-&gt;read()-&gt;close()</li>
+<li>服务端：socket()-&gt;bind()-&gt;listen()-&gt;accent()-（阻塞直到有客户端连接,来一个分配一个socket地址)&gt;read()-&gt;write()-&gt;close()</li>
+</ol>
+</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-%E7%BD%91%E7%BB%9C/" rel="tag">python 网络</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+	</div>
+
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2019/11/11/socket%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="socket基本原理">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-newdraft" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -215,7 +472,184 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Markdown是一种纯文本格式的标记语言。通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
+<p>相比WYSIWYG编辑器</p>
+<p>优点：<br>1、因为是纯文本，所以只要支持Markdown的地方都能获得一样的编辑效果，可以让作者摆脱排版的困扰，专心写作。<br>2、操作简单。比如:WYSIWYG编辑时标记个标题，先选中内容，再点击导航栏的标题按钮，选择几级标题。要三个步骤。而Markdown只需要在标题内容前加#即可</p>
+<p>缺点：<br>1、需要记一些语法（当然，是很简单。五分钟学会）。<br>2、有些平台不支持Markdown编辑模式。</p>
+<p>还好，简书是支持Markdown编辑模式的。</p>
+<p>开启方式：设置-&gt;默认编辑器-&gt;Markdown编辑器<br>一、标题<br>在想要设置为标题的文字前面加#来表示<br>一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。</p>
+<p>注：标准语法一般在#后跟个空格再写文字，貌似简书不加空格也行。</p>
+<p>示例：</p>
+<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="这是四级标题"><a href="#这是四级标题" class="headerlink" title="这是四级标题"></a>这是四级标题</h4><h5 id="这是五级标题"><a href="#这是五级标题" class="headerlink" title="这是五级标题"></a>这是五级标题</h5><h6 id="这是六级标题"><a href="#这是六级标题" class="headerlink" title="这是六级标题"></a>这是六级标题</h6><p>效果如下：</p>
+<p>这是一级标题<br>这是二级标题<br>这是三级标题<br>这是四级标题<br>这是五级标题<br>这是六级标题<br>二、字体<br>加粗<br>要加粗的文字左右分别用两个*号包起来</p>
+<p>斜体<br>要倾斜的文字左右分别用一个*号包起来</p>
+<p>斜体加粗<br>要倾斜和加粗的文字左右分别用三个*号包起来</p>
+<p>删除线<br>要加删除线的文字左右分别用两个~~号包起来</p>
+<p>示例：</p>
+<p><strong>这是加粗的文字</strong><br><em>这是倾斜的文字</em>`<br><strong><em>这是斜体加粗的文字</em></strong><br><del>这是加删除线的文字</del><br>效果如下：</p>
+<p>这是加粗的文字<br>这是倾斜的文字<br>这是斜体加粗的文字<br>这是加删除线的文字</p>
+<p>三、引用<br>在引用的文字前加&gt;即可。引用也可以嵌套，如加两个&gt;&gt;三个&gt;&gt;&gt;<br>n个…<br>貌似可以一直加下去，但没神马卵用</p>
+<p>示例：</p>
+<blockquote>
+<p>这是引用的内容</p>
+<blockquote>
+<p>这是引用的内容</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>这是引用的内容<br>效果如下：</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>这是引用的内容</p>
+<p>这是引用的内容</p>
+<p>这是引用的内容</p>
+<p>四、分割线<br>三个或者三个以上的 - 或者 * 都可以。</p>
+<p>示例：</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<p>效果如下：<br>可以看到，显示效果是一样的。</p>
+<p>五、图片<br>语法：</p>
+<p>![图片alt](图片地址 ‘’图片title’’)</p>
+<p>图片alt就是显示在图片下面的文字，相当于对图片内容的解释。<br>图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加<br>示例：</p>
+<p>![blockchain](<a href="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/" target="_blank" rel="noopener">https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/</a><br>u=702257389,1274025419&amp;fm=27&amp;gp=0.jpg “区块链”)<br>效果如下：</p>
+<p>blockchain<br>上传本地图片直接点击导航栏的图片标志，选择图片即可</p>
+<p>六、超链接<br>语法：</p>
+<p><a href="超链接地址" title="超链接title">超链接名</a><br>title可加可不加<br>示例：</p>
+<p><a href="http://jianshu.com" target="_blank" rel="noopener">简书</a><br><a href="http://baidu.com" target="_blank" rel="noopener">百度</a><br>效果如下：</p>
+<p>简书<br>百度</p>
+<p>注：Markdown本身语法不支持链接在新页面中打开，貌似简书做了处理，是可以的。别的平台可能就不行了，如果想要在新页面中打开的话可以用html语言的a标签代替。</p>
+<p><a href="超链接地址" target="_blank">超链接名</a></p>
+<p>示例<br><a href="https://www.jianshu.com/u/1f5ac0cf6a8b" target="_blank">简书</a><br>七、列表<br>无序列表<br>语法：<br>无序列表用 - + * 任何一种都可以</p>
+<ul>
+<li>列表内容</li>
+</ul>
+<ul>
+<li>列表内容</li>
+</ul>
+<ul>
+<li>列表内容</li>
+</ul>
+<p>注意：- + * 跟内容之间都要有一个空格</p>
+<p>效果如下：</p>
+<p>列表内容<br>列表内容<br>列表内容<br>有序列表<br>语法：<br>数字加点</p>
+<p>1.列表内容<br>2.列表内容<br>3.列表内容</p>
+<p>注意：序号跟内容之间要有空格<br>效果如下：</p>
+<p>1.列表内容<br>2.列表内容<br>3.列表内容</p>
+<p>列表嵌套<br>上一级和下一级之间敲三个空格即可</p>
+<p>一级无序列表内容</p>
+<p>二级无序列表内容<br>二级无序列表内容<br>二级无序列表内容<br>一级无序列表内容</p>
+<p>二级有序列表内容<br>二级有序列表内容<br>二级有序列表内容<br>一级有序列表内容</p>
+<p>二级无序列表内容<br>二级无序列表内容<br>二级无序列表内容<br>一级有序列表内容</p>
+<p>二级有序列表内容<br>二级有序列表内容<br>二级有序列表内容<br>八、表格<br>语法：</p>
+<table>
+<thead>
+<tr>
+<th>表头</th>
+<th align="center">表头</th>
+<th align="right">表头</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内容</td>
+<td align="center">内容</td>
+<td align="right">内容</td>
+</tr>
+<tr>
+<td>内容</td>
+<td align="center">内容</td>
+<td align="right">内容</td>
+</tr>
+</tbody></table>
+<p>第二行分割表头和内容。</p>
+<ul>
+<li>有一个就行，为了对齐，多加了几个<br>文字默认居左</li>
+<li>两边加：表示文字居中</li>
+<li>右边加：表示文字居右<br>注：原生的语法两边都要用 | 包起来。此处省略<br>示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th align="center">技能</th>
+<th align="right">排行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>刘备</td>
+<td align="center">哭</td>
+<td align="right">大哥</td>
+</tr>
+<tr>
+<td>关羽</td>
+<td align="center">打</td>
+<td align="right">二哥</td>
+</tr>
+<tr>
+<td>张飞</td>
+<td align="center">骂</td>
+<td align="right">三弟</td>
+</tr>
+<tr>
+<td>效果如下：</td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+</tbody></table>
+<p>姓名    技能    排行<br>刘备    哭    大哥<br>关羽    打    二哥<br>张飞    骂    三弟<br>九、代码<br>语法：<br>单行代码：代码之间分别用一个反引号包起来</p>
+<pre><code>`代码内容`</code></pre><p>代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行</p>
+<p>(<code>)
+  代码...
+  代码...
+  代码...
+(</code>)<br>注：为了防止转译，前后三个反引号处加了小括号，实际是没有的。这里只是用来演示，实际中去掉两边小括号即可。</p>
+<p>示例：</p>
+<p>单行代码</p>
+<p><code>create database hero;</code><br>代码块</p>
+<p>(<code>)
+    function fun(){
+         echo "这是一句非常牛逼的代码";
+    }
+    fun();
+(</code>)<br>效果如下：</p>
+<p>单行代码</p>
+<p>create database hero;</p>
+<p>代码块</p>
+<p>function fun(){<br>  echo “这是一句非常牛逼的代码”;<br>}<br>fun();</p>
+<p>作者：高鸿祥<br>链接：<a href="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener">https://www.jianshu.com/p/191d1e21f7ed</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
     
@@ -280,7 +714,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>ss <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f634.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f634.png?v8">😴</span><br><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
-<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span> still works<script>
+<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span> still works a
+<p>   Aaa<br>�Fff<br>�Aaa</p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -363,19 +799,37 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></tbody></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></tbody></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></tbody></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
     
@@ -439,8 +893,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>摘要:<br>github 博客基本使用命名<br>正文:<br>    emmmmmmmmmmmmmm<br>    #设置git身份信息:<br>    $ git config –global user.name “你的用户名”<br>    $ git config –global user.email “你的邮箱”</p>
-<pre><code>#发布更新博客
+        <p>摘要:<br>github 博客基本使用命名<br>正文:<br>#空文件夹下初始化 $ hexo init</p>
+<pre><code>emmmmmmmmmmmmmm
+#设置git身份信息:
+$ git config --global user.name "你的用户名"
+$ git config --global user.email "你的邮箱"
+
+#发布更新博客
 $ hexo d -g
 
 #输入创建文章命令，生成一个md文件(/blog/source/_posts/)
