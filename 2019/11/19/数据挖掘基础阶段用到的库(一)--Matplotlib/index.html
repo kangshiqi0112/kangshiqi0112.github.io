@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>数据挖掘基础阶段用到的库(一)--Matplotlib | my blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="环境 Mkvirtualenv –p &#x2F;user&#x2F;local&#x2F;bin&#x2F;python3 aa  虚拟环境 Which Python3 查位置 中文配置： 安装字体（usr&#x2F;share&#x2F;fonts） 删除matplotlib缓存文件#cd ~&#x2F;.cache&#x2F;matplotlib #rm –r * 修改配置文件matplotlibrc  (backend:TkAgg    font.family:san">
+<meta name="keywords" content="python,绘图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据挖掘基础阶段用到的库(一)--Matplotlib">
+<meta property="og:url" content="https:&#x2F;&#x2F;kangshiqi0112.github.io&#x2F;2019&#x2F;11&#x2F;19&#x2F;%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%9F%BA%E7%A1%80%E9%98%B6%E6%AE%B5%E7%94%A8%E5%88%B0%E7%9A%84%E5%BA%93(%E4%B8%80)--Matplotlib&#x2F;index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="环境 Mkvirtualenv –p &#x2F;user&#x2F;local&#x2F;bin&#x2F;python3 aa  虚拟环境 Which Python3 查位置 中文配置： 安装字体（usr&#x2F;share&#x2F;fonts） 删除matplotlib缓存文件#cd ~&#x2F;.cache&#x2F;matplotlib #rm –r * 修改配置文件matplotlibrc  (backend:TkAgg    font.family:san">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-26T03:09:35.190Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="my blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/uploads/favicon.gif">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("your_app_id", "your_app_key");</script>
+<script src="/js/Counter.js"></script>
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/uploads/倾尽天下乱世繁华.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">KK</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/%E6%97%A5%E5%BF%97">日志</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/kangshiqi0112" title="github">github</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="https://mail.google.com/mail" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/aa/" style="font-size: 10px;">aa</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/python-%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">python 网络</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://mail.google.com/mail">gmail</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">KK</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/uploads/倾尽天下乱世繁华.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">KK</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/%E6%97%A5%E5%BF%97">日志</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/kangshiqi0112" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="https://mail.google.com/mail" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-数据挖掘基础阶段用到的库(一)--Matplotlib" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/19/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%9F%BA%E7%A1%80%E9%98%B6%E6%AE%B5%E7%94%A8%E5%88%B0%E7%9A%84%E5%BA%93(%E4%B8%80)--Matplotlib/" class="article-date">
+  	<time datetime="2019-11-19T08:55:07.000Z" itemprop="datePublished">2019-11-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据挖掘基础阶段用到的库(一)--Matplotlib
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%98%E5%9B%BE/" rel="tag">绘图</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2019/11/19/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%9F%BA%E7%A1%80%E9%98%B6%E6%AE%B5%E7%94%A8%E5%88%B0%E7%9A%84%E5%BA%93(%E4%B8%80)--Matplotlib/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="数据挖掘基础阶段用到的库(一)--Matplotlib">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Mkvirtualenv –p /user/local/bin/python3 aa  虚拟环境</li>
+<li>Which Python3 查位置</li>
+<li>中文配置：<ol>
+<li>安装字体（usr/share/fonts）</li>
+<li>删除matplotlib缓存文件#cd ~/.cache/matplotlib #rm –r *</li>
+<li>修改配置文件matplotlibrc  (backend:TkAgg    font.family:sana-serif    font.sana-serif:SimHei    Axes.unicode_minus:False)</li>
+</ol>
+</li>
+</ul>
+<h1 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h1><ol>
+<li>web版的iPython</li>
+<li>ju-Julia; py-Python; ter-R</li>
+<li>编程、写文档、记笔记、展示图表等</li>
+<li>Python –m instsll jupyter  安装（命令行）</li>
+<li>Jupyter notebook 启动（命令行） </li>
+<li>相关快捷键操作：shift+enter(运行)，esc(命令模式)，enter（编辑模式），M切换到markdown模式，z回退，tab补全代码，</li>
+<li>Cell:一对 in out会话被视作一个代码单元，称为cell</li>
+</ol>
+<h1 id="Matplotlib：专门用于开发2D图表（包括3D图表）库"><a href="#Matplotlib：专门用于开发2D图表（包括3D图表）库" class="headerlink" title="Matplotlib：专门用于开发2D图表（包括3D图表）库"></a>Matplotlib：专门用于开发2D图表（包括3D图表）库</h1><ol>
+<li>为什么使用？<ul>
+<li>数据可视化</li>
+<li>js库，D3，echarts</li>
+</ul>
+</li>
+<li>三层结构<ul>
+<li>容器层：1.画板层（Canvas） 2.画布层（Figure）：plt.figure() 3.绘图区/坐标系（axes）：figure,axes=plt.subplots(nrows=,ncols=,figsize=,dpi=)</li>
+<li>辅助显示层：网格、刻度、图例、标题等辅助显示，使图表清晰易懂<ul>
+<li>添加网格plt.grid()</li>
+<li>显示图例 plt.legend()</li>
+<li>修改坐标轴刻度信息 plt.xticks() plt.yticks(y,**args)</li>
+<li>添加描述信息 plt.x/ylabel(),plt.title()</li>
+</ul>
+</li>
+<li>图像层：画各种类型、风格图表<ul>
+<li>折线图 plt.plot()</li>
+<li>散点图 plt.scatter()</li>
+<li>柱状图 plt.bar()</li>
+<li>直方图 plt.hist()</li>
+<li>饼图   plt.pie()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>折线图绘制<ul>
+<li>导包，包含了一系列绘图函数import matplotlib.pyplot as plt </li>
+<li>图表保存 plt.savefig(“test1.png”)</li>
+<li>绘制画布 plt.figure()</li>
+<li>绘制折线 plt.plot(x,y)    </li>
+<li>设置坐标轴标签，图表标题 plt.xlabel()  plt.ylabel() plt.title()</li>
+<li>图表显示 plt.show()</li>
+</ul>
+</li>
+</ol>
+<pre><code>import matplotlib.pyplot as plt  #导包，包含了一系列绘图函数
+%matplotlib inline  #环境，有些不需要
+import random
+x = range(60)
+y_shanghai = [random.uniform(15,18) for i in x]
+y_nanchang = [random.uniform(10,16) for i in x]
+plt.figure(figsize=(20,8),dpi=80) #设置大小和清晰度
+plt.plot(x,y_shanghai,color='r',linestyle='-.',label='shanghai')
+plt.plot(x,y_nanchang,color='b',linestyle='--',label='nanchang')
+#显示图例
+plt.legend(loc='lower left') 
+#修改坐标刻度值
+x_lable =["11点{}分".format(i) for i in x] #x轴说明
+plt.xlabel("time") #x轴标签
+plt.ylabel("temp") #y轴标签
+plt.title("picture") #图表标题
+plt.yticks(range(0,40,5))#y轴0-40，隔5
+plt.xticks(x[::5],x_lable)
+#添加网格显示
+plt.grid(True,linestyle='--',alpha=0.5)#风格和透明度，true可省略
+plt.show()#之后会释放所有图像资源</code></pre><ul>
+<li>绘制数学函数举例</li>
+</ul>
+<pre><code>import matplotlib.pyplot as plt  #导包，包含了一系列绘图函数
+import numpy as np
+x=np.linspace(-1,1,1000)
+y=2*x*x
+plt.figure(figsize=(20,8),dpi=80)
+plt.plot(x,y)
+plt.show()</code></pre><ol start="4">
+<li>多个坐标系显示<ul>
+<li>Plt.subplots(面向对象的画图方法)</li>
+<li>figure,axes=Matplotlib.pyplot.subplots(nrows=1,ncols=1,**fig_kw)</li>
+<li>axes[0].方法名（）</li>
+</ul>
+</li>
+</ol>
+<pre><code>import matplotlib.pyplot as plt  #导包，包含了一系列绘图函数
+import random
+x = range(60)
+y_shanghai = [random.uniform(15,18) for i in x]
+y_nanchang = [random.uniform(10,16) for i in x]
+figure,axes = plt.subplots(nrows=1,ncols=2,figsize=(20,8),dpi=80)
+axes[0].plot(x,y_shanghai,color='r',linestyle='-.',label='shanghai')
+axes[1].plot(x,y_nanchang,color='b',linestyle='--',label='nanchang')
+
+axes[0].legend(loc='lower left')#显示图例
+axes[1].legend(loc='lower left')#显示图例
+
+#描述信息
+axes[0].set_xlabel("time") #x轴标签
+axes[0].set_ylabel("temp") #y轴标签
+axes[1].set_xlabel("time") #x轴标签
+axes[1].set_ylabel("temp") #y轴标签
+axes[1].set_title("picture nanchang") #图表标题
+axes[0].set_title("pictureshanghai") #图表标题
+
+#修改刻度值
+x_lable =["11点{}分".format(i) for i in x] #x轴说明
+axes[0].set_yticks(range(0,40,5))
+axes[0].set_xticks(x[::5])
+axes[0].set_xticklabels(x_lable)
+axes[1].set_yticks(range(0,40,5))
+axes[1].set_xticks(x[::5])
+axes[1].set_xticklabels(x_lable)
+
+#添加网格显示
+axes[0].grid(True,linestyle='--',alpha=0.5)#风格和透明度，true可省略
+axes[1].grid(True,linestyle='--',alpha=0.5)#风格和透明度，true可省略
+plt.show()</code></pre><ol start="5">
+<li>散点图（scatter）</li>
+</ol>
+<pre><code>x = [225,228,269,235,246,257,259]
+y = [111,222,333,444,555,666,777]
+plt.figure(figsize=(20,8),dpi=80)
+plt.scatter(x,y)
+plt.show()</code></pre><ol start="6">
+<li>柱状图 plt.bar(x,y)</li>
+</ol>
+<pre><code>import matplotlib.pyplot as plt
+movie_name = ['雷神','aa','bb','cc']
+tickets = [123,232,555,100]
+plt.figure(figsize=(20,8),dpi=80)
+plt.bar(range(len(movie_name)),tickets,color=['b','g','r','k'])
+plt.xticks(range(len(movie_name)),movie_name)
+
+plt.title("input eeee")
+plt.grid(linestyle='--',alpha=0.5)
+plt.show()
+- 对比类型柱状图举例
+
+
+movie_name = ['雷神','aa','bb']
+first_day = [10587,10062,1275.7]
+first_weekend = [36224,34479,11830]
+plt.figure(figsize=(20,8),dpi=80)
+plt.bar(range(3),first_day,width=0.2,label='firstday')
+plt.bar([0.2,1.2,2.2],first_weekend,width=0.2,label='firstweekend')
+plt.legend()
+
+plt.xticks([0.1,1.1,2.1],movie_name)
+plt.show()</code></pre><ol start="7">
+<li>直方图 (histogram)<ul>
+<li>首先对数据进行分组，然后统计每个分组内数据元的数量，横坐标标出每个组的端点，纵坐标表示频数，每个矩形的高代表对应的频数</li>
+<li>直方图有助于了解数据的分布情况，诸如众数、中位数的大致情况、数据是否存在缺口或者异常值。</li>
+<li>组数=极差/组距=（max-min）/bins</li>
+<li>plt.hist(x,bins=None（组数）,normed=none(是否显示频率,最新density=True)，**kwargs)</li>
+</ul>
+</li>
+</ol>
+<pre><code>time = [131,120,120,150,90,117,108,135,102,132,156,112,139,98,111,156,120,130,141,97,94,113]
+plt.figure(figsize=(20,8),dpi=80)
+distance=5
+group_num=int((max(time)-min(time))/distance)
+plt.hist(time,bins=group_num,density=True)
+plt.xticks(range(min(time),max(time)+5,distance))
+plt.show()</code></pre><ol start="8">
+<li>饼图（pie）<ul>
+<li>Plt.pie(x,labels=(每部分名称),autopct=（占比显示指定%1.2f%%）,colors)</li>
+<li>plt.axis(‘equal’)：为了让显示饼图保持圆形</li>
+</ul>
+</li>
+</ol>
+<pre><code>movie_name = ['雷神','aa','bb','cc','dd']
+tickets = [123,232,555,100,200]
+plt.figure(figsize=(20,8),dpi=80)
+plt.pie(tickets,labels=movie_name,colors=['b','r','y','k','c'],autopct='%1.2f%%')
+plt.axis('equal')
+plt.legend()
+plt.show()</code></pre><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/11/socket%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">socket基本原理</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 KK
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
