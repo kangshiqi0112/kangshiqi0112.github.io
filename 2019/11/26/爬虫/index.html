@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>爬虫 | my blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="(一)爬虫基础 也称网络爬虫、网页蜘蛛、网络机器人、网络蚂蚁等 爬去网页就是通过HTTP协议访问网页，不过通过浏览器访问往往是人的行为，把这种行为变成使用程序来访问爬虫分类 通用爬虫：常见就是搜索引擎，无差别收集数据 聚焦爬虫：有针对性的编写特定领域数据的爬取程序，面向主题    Robots协议 指定一个robots.txt文件，告诉爬虫引擎什么可以爬取，君子协议（user-agent:  al">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬虫">
+<meta property="og:url" content="https:&#x2F;&#x2F;kangshiqi0112.github.io&#x2F;2019&#x2F;11&#x2F;26&#x2F;%E7%88%AC%E8%99%AB&#x2F;index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="(一)爬虫基础 也称网络爬虫、网页蜘蛛、网络机器人、网络蚂蚁等 爬去网页就是通过HTTP协议访问网页，不过通过浏览器访问往往是人的行为，把这种行为变成使用程序来访问爬虫分类 通用爬虫：常见就是搜索引擎，无差别收集数据 聚焦爬虫：有针对性的编写特定领域数据的爬取程序，面向主题    Robots协议 指定一个robots.txt文件，告诉爬虫引擎什么可以爬取，君子协议（user-agent:  al">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-10T08:51:27.793Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="my blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/uploads/favicon.gif">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("your_app_id", "your_app_key");</script>
+<script src="/js/Counter.js"></script>
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/uploads/倾尽天下乱世繁华.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">KK</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/%E6%97%A5%E5%BF%97">日志</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/kangshiqi0112" title="github">github</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="https://mail.google.com/mail" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/aa/" style="font-size: 10px;">aa</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://mail.google.com/mail">gmail</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">KK</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/uploads/倾尽天下乱世繁华.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">KK</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/%E6%97%A5%E5%BF%97">日志</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/kangshiqi0112" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="https://mail.google.com/mail" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="new-爬虫" class="article article-type-new" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/26/%E7%88%AC%E8%99%AB/" class="article-date">
+  	<time datetime="2019-11-26T03:20:50.000Z" itemprop="datePublished">2019-11-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      爬虫
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2019/11/26/%E7%88%AC%E8%99%AB/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="爬虫">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一-爬虫基础"><a href="#一-爬虫基础" class="headerlink" title="(一)爬虫基础"></a>(一)爬虫基础</h1><ul>
+<li>也称网络爬虫、网页蜘蛛、网络机器人、网络蚂蚁等</li>
+<li>爬去网页就是通过HTTP协议访问网页，不过通过浏览器访问往往是人的行为，把这种行为变成使用程序来访问<h2 id="爬虫分类"><a href="#爬虫分类" class="headerlink" title="爬虫分类"></a>爬虫分类</h2><ul>
+<li>通用爬虫：常见就是搜索引擎，无差别收集数据</li>
+<li>聚焦爬虫：有针对性的编写特定领域数据的爬取程序，面向主题</li>
+</ul>
+</li>
+</ul>
+<h2 id="Robots协议"><a href="#Robots协议" class="headerlink" title="Robots协议"></a>Robots协议</h2><ul>
+<li>指定一个robots.txt文件，告诉爬虫引擎什么可以爬取，君子协议（user-agent:  allow:  disallow:）例如：<a href="http://www.txtnovel.me/robots.txt" target="_blank" rel="noopener">http://www.txtnovel.me/robots.txt</a></li>
+</ul>
+<h1 id="二-python爬虫urllib使用"><a href="#二-python爬虫urllib使用" class="headerlink" title="(二)python爬虫urllib使用"></a>(二)python爬虫urllib使用</h1><h2 id="urllib是标准库，它是一个工具包模块"><a href="#urllib是标准库，它是一个工具包模块" class="headerlink" title="urllib是标准库，它是一个工具包模块"></a>urllib是标准库，它是一个工具包模块</h2><ul>
+<li>包含下面模块来处理url：<ol>
+<li>Urllib.request 用于打开和读写url</li>
+<li>Urllib.error 包含了由urllib.request引起的异常</li>
+<li>Urllib.parse 用于解析url</li>
+<li>Urllib.robotparser 分析robots.txt文件</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-1-urllib-request模块"><a href="#2-1-urllib-request模块" class="headerlink" title="2.1 urllib.request模块"></a>2.1 urllib.request模块</h3><ul>
+<li>urllib.request模块：<ul>
+<li>模块定义了在基本和摘要式身份验证、重定向、cookies等应用中打开url的函数和类</li>
+<li>Urlopen方法：urlopen(url,data=none),返回类文件对象<ul>
+<li>url是链接地址字符串，或请求对象</li>
+<li>data提交的数据，为none发起get请求，否则发起post请求</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>from urllib.request import urlopen
+response = urlopen('http://www.bing.com')#get 方法
+print(response.closed)
+with response:
+    print(1,type(response))#http.client.HTTPResponse 类文件对象
+    print(2,response.status,response.reason)#状态
+    print(3,response.geturl())#返回真正的url
+    print(4,response.info())#headers
+    print(5,response.read())#读取返回的内容
+print(response.closed)</code></pre><ul>
+<li>部分结果：<br>  False<br>  1 &lt;class ‘http.client.HTTPResponse’&gt;<br>  2 200 OK<br>  3 <a href="http://cn.bing.com/" target="_blank" rel="noopener">http://cn.bing.com/</a><br>  4 Cache-Control: private, max-age=0<br>  Content-Length: 115303</li>
+</ul>
+<h3 id="2-2-user-agent问题"><a href="#2-2-user-agent问题" class="headerlink" title="2.2 user-agent问题"></a>2.2 user-agent问题</h3><ul>
+<li>伪装user-agent</li>
+<li>寻找浏览器的user-agent或者在开发者模式下的network中headers下寻找user-agent</li>
+</ul>
+<pre><code>from urllib.request import urlopen,Request
+url='http://www.bing.com'
+ua='Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+req = Request(url,headers={'User-agent':ua})
+#req.add header('User-agent',ua)
+response = urlopen(req)#get 方法</code></pre><h3 id="2-3-Request类"><a href="#2-3-Request类" class="headerlink" title="2.3 Request类"></a>2.3 Request类</h3><ul>
+<li>Request(url,data=None,header={})</li>
+<li>add_header(key,val)为header中增加键值对</li>
+<li>可以做一个ua列表，每次随即获取里面的user-agent,模拟来自不同浏览器，更安全（ua_list=[“ “,” “];ua=random.choice(ua_list)）<h3 id="2-4-urllib-parse-模块"><a href="#2-4-urllib-parse-模块" class="headerlink" title="2.4 urllib.parse 模块"></a>2.4 urllib.parse 模块</h3><ul>
+<li>该模块可以完成对url进行解析</li>
+<li>parse.urlencode（{‘’:,’’:}）编码，传送数据时会更安全。函数第一个参数要求是一个字典或者二元组序列。如果直接将url放入字典中，会导致冒号、斜杠、等号、文号、&amp;等符号全部被编码。</li>
+<li>一般来讲，地址部分不需要转化，但是？后的参数部分需要转化编码为：%+十六进制表示</li>
+<li>parse.unquote()解码。</li>
+</ul>
+</li>
+</ul>
+<pre><code>from urllib import parse
+d={'id':1,
+  'name':'tom',
+   'url':'http://www.magedu.com/python?id=1&amp;name=tom'# 3}
+#https://www.baidu.com/s?wd=%E4%B8%AD # wd=中  4
+#url='http://www.magedu.com/python?id=1&amp;name=tom'#get  1
+#url='http://www.magedu.com/python'#post  2
+#body'id=1&amp;name=tom' 2
+u = parse.urlencode(d)
+print(u)</code></pre><p>结果：id=1&amp;name=tom&amp;url=http%3A%2F%2F<a href="http://www.magedu.com%2Fpython%3Fid%3D1%26name%3Dtom" target="_blank" rel="noopener">www.magedu.com%2Fpython%3Fid%3D1%26name%3Dtom</a></p>
+<pre><code>from urllib import parse
+u = parse.urlencode({'wd':'中'})#编码
+url='https://www.baidu.com/s?{}'.format(u)
+print(url)
+print(parse.unquote(u))#解码
+print(parse.unquote(url))</code></pre><p>结果：<br><a href="https://www.baidu.com/s?wd=%E4%B8%AD" target="_blank" rel="noopener">https://www.baidu.com/s?wd=%E4%B8%AD</a><br>wd=中<br><a href="https://www.baidu.com/s?wd=中" target="_blank" rel="noopener">https://www.baidu.com/s?wd=中</a></p>
+<h2 id="提交方法method"><a href="#提交方法method" class="headerlink" title="提交方法method"></a>提交方法method</h2><ul>
+<li>GET方法，数据是通过url传递的，也就是说数据是在HTTP报文的header部分</li>
+<li>POST方法，数据是放在HTTP报文的body部分提交的</li>
+<li>数据都是键值对形式，多个参数之间使用&amp;符号连接。例如a=18&amp;b=abc<br>需求：写程序完成对关键字bing搜索，将返回结果保存到一个网页文件</li>
+<li>get方法</li>
+</ul>
+<pre><code>from urllib import parse
+d={'q':'马哥教育'}
+base_url='http://cn.bing.com/search'
+u = parse.urlencode(d)
+url = '{}?{}'.format(base_url,u)
+print(url)
+from urllib.request import urlopen,Request
+ua='Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+req = Request(url,headers={
+    'User-agent':ua
+})
+#res = urlopen(req)
+with urlopen(req) as res:
+    with open('c:/bing.html','wb')as f:
+        f.write(res.read())
+        f.flush()</code></pre><ul>
+<li>post方法 <a href="http://httpbin.org/" target="_blank" rel="noopener">http://httpbin.org/</a> 测试网站</li>
+</ul>
+<pre><code>from urllib.request import urlopen,Request
+req= Request('http://httpbin.org/post')
+req.add_header('User-agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+)
+data = parse.urlencode({'name':'tom,@=/&amp;+','age':6})
+res = urlopen(req,data=data.encode())#post方法
+with res:
+    print(res.read())</code></pre><h1 id="（三）AJAX数据爬取"><a href="#（三）AJAX数据爬取" class="headerlink" title="（三）AJAX数据爬取"></a>（三）AJAX数据爬取</h1><h2 id="处理json数据"><a href="#处理json数据" class="headerlink" title="处理json数据"></a>处理json数据</h2><ul>
+<li>很多网页是动态异步加载，所以我们需要分析网页，找到正确地址等信息，每个网站分析处理的方式都不一样</li>
+</ul>
+<pre><code>from urllib.parse import urlencode
+from urllib.request import urlopen,Request
+import simplejson
+ua='Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+d={
+    'type':'movie',
+    'tag':'热门',
+    'page_limit':10,
+    'page_start':10
+}
+jurl='https://movie.douban.com/j/search_subjects'
+req = Request('{}?{}'.format(jurl,urlencode(d)),headers={
+    'User-agent':ua
+})
+with urlopen(req) as res:
+     print(simplejson.loads(res.read()))</code></pre><h2 id="HTTPS证书忽略"><a href="#HTTPS证书忽略" class="headerlink" title="HTTPS证书忽略"></a>HTTPS证书忽略</h2><ul>
+<li>HTTPS使用SSL安全套阶层协议，在传输层对网络数据进行加密。HTTPS使用时需要证书，而证书需要CA认证</li>
+<li>CA（certificate authority）是数字证书认证中心的简称，是受信任的第三方。是指发放、管理、废除数字证书的的机构</li>
+<li>当爬取没有认证的网址时，会报错，例如12306，它有自己给自己的根证书，正常情况下需要下载证书才能访问。</li>
+<li>import ssl 包中有方法可以模拟浏览器忽略证书不安全信息 </li>
+</ul>
+<pre><code>context = ssl._create_unverified_context()#忽略不信任证书
+res = urlopen(request,context=context)</code></pre><h1 id="urllib3库-amp-amp-requests库"><a href="#urllib3库-amp-amp-requests库" class="headerlink" title="urllib3库 &amp;&amp; requests库"></a>urllib3库 &amp;&amp; requests库</h1><ul>
+<li>标准库urllib缺少了一些关键的功能，非标准库的第三方库urllib3提供了，比如说连接池管理</li>
+<li>安装 $ pip install urllib3  使用 Import urllib3</li>
+</ul>
+<pre><code>import urllib3
+from urllib.parse import urlencode
+from urllib.request import urlopen,Request
+import simplejson
+#连接池管理器
+ua='Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+d={
+    'type':'movie',
+    'tag':'热门',
+    'page_limit':10,
+    'page_start':10
+}
+jurl='https://movie.douban.com/j/search_subjects'
+url = '{}?{}'.format(jurl,urlencode(d))
+with urllib3.PoolManager() as http:
+    response = http.request('GET',url,headers={
+        'User-agent': ua
+    })
+    print(type(response))
+    print(response.status,response.reason)
+    print(response.headers)
+    #print(response.data)
+    print(simplejson.loads(response.data))</code></pre><ul>
+<li>requests库提供很友好的封装 </li>
+<li>安装 pip install requests</li>
+<li>其中的session=requests.Session()能用来保存部分信息（response=session.get(url,headers={})）</li>
+</ul>
+<pre><code>from urllib.parse import urlencode
+import requests
+ua='Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+d={
+    'type':'movie',
+    'tag':'热门',
+    'page_limit':10,
+    'page_start':10
+}
+jurl='https://movie.douban.com/j/search_subjects'
+url = '{}?{}'.format(jurl,urlencode(d))
+response = requests.request('GET',url,headers={'User-agent': ua})
+with response:
+    print(type(response))#&lt;class 'requests.models.Response'&gt;
+    print(response.url)</code></pre><h1 id="gzip解压方式"><a href="#gzip解压方式" class="headerlink" title="gzip解压方式"></a>gzip解压方式</h1><h2 id="实例一"><a href="#实例一" class="headerlink" title="实例一"></a>实例一</h2><pre><code>from urllib.parse import urlencode
+from urllib.request import urlopen,Request
+from io import BytesIO
+import gzip
+from lxml import etree
+ua='Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+d={
+    'novelid':'3617495',
+    'chapterid':3
+}
+jurl='http://www.jjwxc.net/onebook.php'
+req = Request('{}?{}'.format(jurl,urlencode(d)),headers={
+    'User-agent':ua
+})
+with urlopen(req) as res:
+    data=res.read()
+    buff=BytesIO(data)
+    f=gzip.GzipFile(fileobj=buff)
+    res  = f.read().decode('gbk')
+    html = etree.HTML(res)
+    arti = html.xpath("//table//div[@class='noveltext']/text()")
+    arti1= html.xpath("//table//div[@class='noveltext']/div/h2/text()")
+    file="d://破云2.txt"
+    f = open(file, encoding='utf-8', mode='w')
+    for i in arti1:
+        f.write(i)
+    for t in arti:
+        t="    "+t.strip()+"\n"
+        f.write(t)
+        print(t)
+    #print(res)
+    f.close()</code></pre><h2 id="实例二"><a href="#实例二" class="headerlink" title="实例二"></a>实例二</h2><pre><code>from lxml import etree
+import requests
+from urllib.parse import urlencode
+
+ua='Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+d={
+    'novelid':'3617495',
+    'chapterid':2
+}
+jurl='http://www.jjwxc.net/onebook.php'
+url='{}?{}'.format(jurl,urlencode(d))
+response=requests.get(url,headers={'User-agent':ua})
+response.encoding='gbk'
+with response:
+    content = response.text #html内容
+    html = etree.HTML(content)#分析html,返回dom根节点
+    arti = html.xpath("//table//div[@class='noveltext']/text()")
+    arti1= html.xpath("//table//div[@class='noveltext']/div/h2/text()")
+    file="d://破云2a.txt"
+    f = open(file,encoding='utf-8', mode='w')
+    for i in arti1:
+        f.write(i)
+    for t in arti:
+        t="    "+t.strip()+"\n"
+        print(t)
+        f.write(t)
+    f.close()</code></pre><h2 id="百度方法三"><a href="#百度方法三" class="headerlink" title="百度方法三"></a>百度方法三</h2><pre><code>from gzip import GzipFile
+from StringIO import StringIO
+def gzip(data):
+    buf = StringIO(data)
+    f = gzip.GzipFile(fileobj=buf)
+    return f.read()</code></pre><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/19/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%9F%BA%E7%A1%80%E9%98%B6%E6%AE%B5%E7%94%A8%E5%88%B0%E7%9A%84%E5%BA%93(%E4%B8%80)--Matplotlib/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据挖掘基础阶段用到的库(一)--Matplotlib</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 KK
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
