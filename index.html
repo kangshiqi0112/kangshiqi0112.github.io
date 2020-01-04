@@ -120,7 +120,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/aa/" style="font-size: 10px;">aa</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a>
+						<a href="/tags/aa/" style="font-size: 10px;">aa</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a>
 					</div>
 				</section>
 				
@@ -185,6 +185,139 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-c++--基础" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/01/04/c++--%E5%9F%BA%E7%A1%80/" class="article-date">
+  	<time datetime="2020-01-04T07:30:44.000Z" itemprop="datePublished">2020-01-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/04/c++--%E5%9F%BA%E7%A1%80/">
+        c++基础
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="与c语言的小区别"><a href="#与c语言的小区别" class="headerlink" title="与c语言的小区别"></a>与c语言的小区别</h2><ul>
+<li>1.c语言没有提供bool类型，c++有bool类型（true,false=0），以此类型输出需加boolalpha</li>
+<li>2.两种初始化方法 int x=2 和int x(2),c++可以随用随定义</li>
+<li>3.c语言用scanf输入，print输出；c++用cin输入，cout输出。（cout&lt;&lt;x&lt;&lt;endl;）,endl(类似于\n回车)；（cin&gt;&gt;x&gt;&gt;y）</li>
+<li>4.八进制输出（cout&lt;&lt;oct&lt;&lt;x）,十进制（dec）,十六进制（hex）</li>
+</ul>
+<h2 id="其他细节"><a href="#其他细节" class="headerlink" title="其他细节"></a>其他细节</h2><ul>
+<li>1.namespace(命名空间)，用来区分来自不同地方的相同名字的变量和函数等</li>
+<li>2.#include<iostream> 头文件 内包含输入输出语法，但是它在空间std中，需要using namespace std;</iostream></li>
+</ul>
+<pre><code>include&lt;iostream&gt;//包含输入输出语法
+include&lt;stdlib.h&gt;
+using namespace std;
+namespace A
+{
+    int x=0;
+    void f1(int *arr){int a=arr[0]}//数组传参
+    void f2();
+}
+int main(){
+cout&lt;&lt;A::x&lt;&lt;endl;
+A::f1();
+system("pause");//请按任意键继续。。。
+}</code></pre><ul>
+<li>3.引用类型（变量的别名）<ul>
+<li>引用必须初始化（int a =2;int &amp;b=a;），对别名的修改会影响到本身</li>
+<li>指针类型的引用（*&amp;指针引用名=指针;）int a=10; int *p=&amp;a; int *&amp;q=p; *q=20; cout &lt;&lt;a;—-结果为20</li>
+<li>函数参数的引用，比指针更方便（void get(int &amp;x,int &amp;y){}）</li>
+</ul>
+</li>
+<li>4.const<ul>
+<li>const int x=3//常量，无法更改</li>
+<li>int const <em>p(const int *p)=&amp;x,此时p可以指向另一个地址，const修饰的是</em>p,即x的值</li>
+<li>int *const p=&amp;x,此时p的指向不能变，x的值可变</li>
+<li>const int &amp;y=x,此时通过变量名x修改可以，引用名Y不行</li>
+<li>#define 是宏定义，编译时不检查语法错误，const检查</li>
+</ul>
+</li>
+<li>5.c++中函数参数可以有默认值，但含有默认值的参数要放到后面，使用时最好函数声明时写上默认值，定义时不写，实参会覆盖默认值</li>
+<li>6.函数重载：在同一作用域中，函数名相同，函数参数不同</li>
+<li>7.内联函数inline：编译时将函数体代码和实参代替函数调用语句(声明：inline int max();)。递归函数无法使用内联函数，内联编译是建议性的，由编译器决定。逻辑简单、调用频繁的函数建议使用内联函数</li>
+<li>8.内存管理：内存的申请与释放（int *p=new int;int *arr=new int[10]//申请块内存）（delete p/[]p;p=null）（c中void *malloc()–void free()）<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/c/">c++</a>
+	</div>
+
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2020/01/04/c++--%E5%9F%BA%E7%A1%80/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="c++基础">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Numpy--数据挖掘基础阶段用到的库（二）" class="article article-type-post" itemscope itemprop="blogPost">
   
