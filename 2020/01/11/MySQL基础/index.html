@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql 基础 | my blog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="小知识点 mysql目前属于Oracle公司，它是一个开源的关系型数据库管理系统，分为社区版和企业版 mysql的目录结构： bin目录，存储可执行文件 data目录，存储数据文件 docs目录，文档 include目录，存储包含的头文件’ lib目录，存储库文件 share目录，错误信息和字符集文件   set names gbk; DELIMITER &#x2F;&#x2F;    用&#x2F;&#x2F;结束每句话 图形化管理工">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql 基础">
+<meta property="og:url" content="https:&#x2F;&#x2F;kangshiqi0112.github.io&#x2F;2020&#x2F;01&#x2F;11&#x2F;MySQL%E5%9F%BA%E7%A1%80&#x2F;index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="小知识点 mysql目前属于Oracle公司，它是一个开源的关系型数据库管理系统，分为社区版和企业版 mysql的目录结构： bin目录，存储可执行文件 data目录，存储数据文件 docs目录，文档 include目录，存储包含的头文件’ lib目录，存储库文件 share目录，错误信息和字符集文件   set names gbk; DELIMITER &#x2F;&#x2F;    用&#x2F;&#x2F;结束每句话 图形化管理工">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-01-11T14:04:58.523Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="my blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/uploads/favicon.gif">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("your_app_id", "your_app_key");</script>
+<script src="/js/Counter.js"></script>
+  
+</head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/uploads/倾尽天下乱世繁华.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">KK</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/categories/%E6%97%A5%E5%BF%97">日志</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/kangshiqi0112" title="github">github</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="https://mail.google.com/mail" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">笔记</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 15px;">语法</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://mail.google.com/mail">gmail</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">KK</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/uploads/倾尽天下乱世繁华.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">KK</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/categories/%E6%97%A5%E5%BF%97">日志</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/kangshiqi0112" title="github">github</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="https://mail.google.com/mail" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-MySQL基础" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/01/11/MySQL%E5%9F%BA%E7%A1%80/" class="article-date">
+  	<time datetime="2020-01-11T07:21:34.000Z" itemprop="datePublished">2020-01-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mysql 基础
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2020/01/11/MySQL%E5%9F%BA%E7%A1%80/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="mysql 基础">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点"></a>小知识点</h1><ul>
+<li>mysql目前属于Oracle公司，它是一个开源的关系型数据库管理系统，分为社区版和企业版</li>
+<li>mysql的目录结构：<ul>
+<li>bin目录，存储可执行文件</li>
+<li>data目录，存储数据文件</li>
+<li>docs目录，文档</li>
+<li>include目录，存储包含的头文件’</li>
+<li>lib目录，存储库文件</li>
+<li>share目录，错误信息和字符集文件</li>
+</ul>
+</li>
+<li>set names gbk;</li>
+<li>DELIMITER //    用//结束每句话</li>
+<li>图形化管理工具Navicat for MySQL，PHPMyAdmin,MySQL Workbench<h2 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h2></li>
+<li>MySql可以将数据以不同的技术存储在文件（内存）中，这种技术成为存储引擎</li>
+<li>存储引擎，可以通过配置文件修改，也可以在创建表时最后加ENGINE=MyISAM;,还可以alter修改：<ul>
+<li>MyISAM:256TB，支持索引，表锁，支持数据压缩</li>
+<li>InnoDB:64TB，支持事务处理，支持索引，行锁，支持外键</li>
+<li>Memory:有限制，支持索引，表锁</li>
+<li>Archive:无限制，行锁，支持数据压缩</li>
+<li>CSV:不支持索引<h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1></li>
+</ul>
+</li>
+<li>MSI安装/ZIP安装，官网下载即可</li>
+<li>安装类型分三种：Typical安装（典型安装）、Custom（自定义安装）、Complete（完全安装），通常用典型安装就可以</li>
+<li>bin目录下有配置文件的exe文件，按提示操作即可（标准配置）</li>
+<li>配置目录下，min.ini文件–修改编码方式[mysql]  default-character-set=utf8   [mysqld]  character-set-server=utf8</li>
+<li>命令行中启动/停止Mysql服务（net start/stop mysql）</li>
+<li>命令行中登录 mysql -uroot -p -P3306 -h127.0.0.1 –prompt \h<ul>
+<li>u用户名，p密码，P端口号，D打开指定数据库，h服务器名称,V输出版本信息并且退出，–prompt \h(服务器名称)\D(完整的日期)\d(当前数据库)\u(当前用户)提示符</li>
+</ul>
+</li>
+<li>退出 exit;/quit;/\q;</li>
+<li>显示当前服务器版本/当前日期时间/当前用户（SELECT VERSION()/NOW()/USER();）<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1></li>
+<li>Mysql语句的规范（约定俗成，大小写混也不是不行）<ul>
+<li>关键字和函数名称全部大写</li>
+<li>数据库名称、表名称、字段名称全部小写</li>
+<li>SQL语句必须分号结尾<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2></li>
+</ul>
+</li>
+<li>创建数据库 CREATE DATABASE [IF NOT EXISTS] t1 [CHARACTER SET gbk]; </li>
+<li>查看数据库 SHOW [CREATE] DATABASE [db_name];</li>
+<li>修改数据库 ALTER DATABASE db_name CHARACTER SET[=]gbk</li>
+<li>删除数据库 DROP DATABASE db_name;</li>
+</ul>
+<h2 id="数据表常规操作"><a href="#数据表常规操作" class="headerlink" title="数据表常规操作"></a>数据表常规操作</h2><ul>
+<li>数据类型：<ul>
+<li>整型：TINTINT(1字节)，SMALLINT(2),MEDIUMINT(3),INT(4),BIGINT(8)</li>
+<li>浮点型：FLOAT[(M,D)],DOUBLE[(M,D)]   M:数字总位数 D:小数点后面的位数</li>
+<li>日期时间类型：YEAR,TIME,DATE,DATETIME,TIMESTAMP（时间戳）</li>
+<li>字符型 CHAR(M),VARCHAR(M),TINYTEXT,TEXT,MEDIUMTEXT,LONGTEXT,枚举（选择）：ENUM(‘value1’,’’,…),SET(‘value1’,’’,…)</li>
+</ul>
+</li>
+<li>表操作<ul>
+<li>USE 数据库名称;</li>
+<li>CREATE TABLE [IF NOT EXISTS] NAME(age INT NOT NULL,id int AUTO_INCREMENT(自动编号1++，必须定义成主键(会自动产生索引)) PRIMARY KEY(主键),…)   </li>
+<li>SHOW TABLES[FROM db_name][link’pattern’|WHERE expr] 查看数据表结构(SHOW COLUMNS FROM db_name)</li>
+<li>唯一约束 UNIQUE KEY,可以存在空值</li>
+<li>默认约束 DEFAULE （sex ENUM(‘1’,’2’) DEFAULE’1’;）</li>
+<li>外键约束 FOREIGN KEY （pid）REFERENCES table1 (id) [ON DELETE CASCADE]<ul>
+<li>CASCADE:从父表删除或更新且自动删除或更新子表中匹配的行</li>
+<li>SET NULL:从父表删除且更新行，并设置子表中的外键列为null，如果使用该选项，必须保证子表列没有指定NOT NULL</li>
+<li>RESTRICT:拒绝对父表的删除更新操作</li>
+<li>保持数据一致性、完整性，实现数据表之间的链接，这也是称为关系型数据库的原因</li>
+<li>父表和子表必须使用相同的存储引擎（InnoDB）可在配置文件中修改，而且禁止使用临时表</li>
+<li>外键列和参照列必须具有相似的数据类型</li>
+<li>外键列和参照列必须创建索引，如果外键列不存在索引的话，mysql将自动创建索引</li>
+</ul>
+</li>
+<li>修改数据表<ul>
+<li>添加单列 ALTER TABLE t1 ADD age int [约束] [FIRST|AFTER 某列名]</li>
+<li>添加多列 ALTER TABLE t1 ADD（age int,,,）</li>
+<li>删除列   ALTER TABLE t1 DROP col_name,DROP col_name</li>
+<li>添加约束 ALTER TABLE t1 ADD[CONSTRAINT PK_username自定义约束名]PRIMARY KEY(id)</li>
+<li>删除索引 ALTER TABLE t1 DROP index(pid)</li>
+<li>修改列定义 ALTER TABLE t1 MODIFY age smallint [位置]</li>
+<li>修改列名称 ALTER TABLE t1 CHANGE old_name new_name column_definition [位置]</li>
+<li>修改表名 ALTER TABLE t1 RENAME t2 (最好别改，牵一发动全身)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>记录操作<ul>
+<li>INSERT tbl_name[(col_name,…)]VALUES(val,…);</li>
+<li>INSERT tbl_name SET col_name=’’,id=’’,… //可以使用子查询</li>
+<li>INSERT tbl_name[(col_name,…)]SELECT… //把查找结果插入</li>
+<li>UPDATA users set age=age+5,sex=’2’[WHERE…]; //更新记录</li>
+<li>DELETE FROM tbl_name [WHERE id=6 AND…]; //删除记录</li>
+<li>SELECT *[可以是某些列，逗号隔开][AS 别名] FROM tbl_name [WHERE…]；<ul>
+<li>group by{col_name|position}[ASC|DESC]…:查询结果分组</li>
+<li>having age&gt;35:分组条件,卸载group by 列的后面，且age必须在查询结果中</li>
+<li>order by{col_name|expr|position}[ASC|DESC]…:对查询结果进行排序</li>
+<li>limit [起始位置0开始],2(记录数):限制查询结果返回的数量<h2 id="其他查询操作"><a href="#其他查询操作" class="headerlink" title="其他查询操作"></a>其他查询操作</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子查询<ul>
+<li>子查询：出现在其他SQL语句内的SELECT子句</li>
+<li>使用比较运算符的子查询（&gt;,&lt;=,=,!=,&lt;=&gt;…），&gt;=ANY(SELECT…),SOME,ALL</li>
+<li>由[NOT]IN/EXISTS引发的子查询</li>
+<li>INSERT…SELECT…   CREATE…SELECT… SELECT…SELECT..</li>
+</ul>
+</li>
+<li>连接 …FROM t1 [AS T1]join t2 ON T1.id=t2.id //多张数据表查询结果<ul>
+<li>内连接(JOIN,INNER JOIN,CROSS JOIN):显示左右表符合连接条件的记录（交集）</li>
+<li>外链接(LEFT JOIN,RIGHT JOIN):左外连接显示左表全部和右表符合条件的，右外连接相反</li>
+<li>多表连接进行查询，与内连接写法相似</li>
+<li>多表连接进行删除记录（用于删除重复记录）</li>
+</ul>
+</li>
+<li>字符函数<ul>
+<li>CONCAT(,):字符连接</li>
+<li>CONCAT_WA(‘|’,,):使用指定的分隔符进行字符连接</li>
+<li>FORMAT(数字,小数点后几位):数字格式化</li>
+<li>LOWER():转换为小写字母</li>
+<li>UPPER():转换为大写字母</li>
+<li>LEFT/RIGHT(,前几位):取左/右侧字符</li>
+<li>LENGTH():获取字符串长度</li>
+<li>LTRIM()/RTRIM():删除前/后空格</li>
+<li>TRIM():删除前后空格</li>
+<li>SUBSTRING(,起始位置（-1）,长度):字符串截取</li>
+<li>REPLACE():字符串替换</li>
+<li>[NOT]LIKE ‘%o%’:模式匹配,存在o的字符串</li>
+</ul>
+</li>
+<li>数值运算符<ul>
+<li>CEIL():进一取整</li>
+<li>DIV():整数除法</li>
+<li>FLOOR():舍一取整</li>
+<li>MOD():取余数</li>
+<li>POWER():幂运算</li>
+<li>ROUND():四舍五入</li>
+<li>TRUNCATE(,截取小数点后几位):数字截取</li>
+</ul>
+</li>
+<li>比较运算符与函数<br>  -[not]BETWEEN…AND…:是否在范围内between 1 and 20<br>  -[NOT]IN():是否在列出值范围内In(5,15,20,30)<ul>
+<li>IS [NOT] NULL:是否为空</li>
+</ul>
+</li>
+<li>日期时间函数<ul>
+<li>NOW():当前日期和时间select now()</li>
+<li>CURDATE():当前日期</li>
+<li>CURTIME():当前时间</li>
+<li>DATE_ADD(‘2014-3-12’,INTERVAL -365 DAY):日期变化</li>
+<li>DATEDIFF():两个日期差值</li>
+<li>DATE_FORMAT(‘2014-1-12’,’%m%d日%Y年’)H i s:日期格式化</li>
+</ul>
+</li>
+<li>信息函数<ul>
+<li>CONNECTION_ID():当前id</li>
+<li>DATABASE():当前所打开的数据库</li>
+<li>LAST_INSERT_ID:最后插入记录</li>
+<li>USER():当前用户</li>
+<li>VERSION():版本信息</li>
+</ul>
+</li>
+<li>聚合函数<ul>
+<li>AVG():平均值</li>
+<li>COUNT():计数</li>
+<li>MAX()/MIN():最大/最小值</li>
+<li>SUM():求和</li>
+</ul>
+</li>
+<li>加密函数<ul>
+<li>MD5():信息摘要算法</li>
+<li>PASSWORD():密码算法<h2 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h2></li>
+</ul>
+</li>
+<li>不带参数<br>  CREATE FUNCTION f1() RETURNS VARCHAR(30)<br>  RETURN DATE_FORMAT(NOW(),’%m%d日%Y年 %H%i%a’)</li>
+<li>带参数<br>  CREATE FUNCTION f1(num1 int unsigned,num2 int unsigned) RETURNS float(10,2) unsigned<br>  RETURN (num1+num2)/2</li>
+<li>复杂<br>  …<br>  BEGIN<br>  INSERT …;<br>  RETURN LAST_INSERT_ID();<br>  END<br>  //</li>
+<li>调用f1()</li>
+<li>删除DROP FUNCTION f1;<h2 id="MYSQL存储过程"><a href="#MYSQL存储过程" class="headerlink" title="MYSQL存储过程"></a>MYSQL存储过程</h2></li>
+<li>存储过程是SQL语句和控制语句的预编译集合，以一个名称存储并作为一个单元处理</li>
+<li>优点：增强sql语句的功能和灵活性，实行较快的执行速度，减少网络流量</li>
+</ul>
+<pre><code>CREATE PROCEDURE sp1() select version();
+CALL sp1[()]
+
+DELIMITER //
+CREATE PROCEDURE removeUserById(IN id1 INT UNSIGNED)
+BEGIN
+DELETE FROM users where id=id1;
+END 
+//
+DELIMITER ;
+CALL removeUserById(3);
+DROP PROCEDURE removeUserById;
+
+DELIMITER //
+CREATE PROCEDURE removeUserByIdAndreturn(IN id1 INT UNSIGNED,OUT usernums int unsigned)
+BEGIN
+DELETE FROM users where id=id1;
+SELECT COUNT(id)FROM users INTO usernums;
+END 
+//
+DELIMITER ;
+CALL removeUserByIdAndreturn(3,@nums);
+SELECT @nums;
+
+SET @i=8;//用户变量</code></pre><ul>
+<li>存储过程参数类型<ul>
+<li>IN：表示该参数的值必须在调用存储过程时指定，不可返回</li>
+<li>OUT：表示该参数的值可以被存储过程改变，并且可以返回</li>
+<li>INOUT：表示该参数的值在调用时指定，可以被改变和返回</li>
+</ul>
+</li>
+<li>与自定义函数的区别<ul>
+<li>存储过程实现功能要复杂一些，函数的针对性更强</li>
+<li>存储过程可以返回多个值，函数只能有一个返回值</li>
+<li>存储过程一般独立的来执行，函数可以作为其他sql语句的组成部分来出现</li>
+</ul>
+</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/01/04/c++--%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">c++基础</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 KK
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>

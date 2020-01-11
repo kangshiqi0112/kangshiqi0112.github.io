@@ -9,15 +9,15 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基础与c语言的小区别 1.c语言没有提供bool类型，c++有bool类型（true,false=0），以此类型输出需加boolalpha 2.两种初始化方法 int x=2 和int x(2),c++可以随用随定义 3.c语言用scanf输入，print输出；c++用cin输入，cout输出。（cout&amp;lt;&amp;lt;x&amp;lt;&amp;lt;endl;）,endl(类似于\n回车)；（cin&amp;gt;&amp;">
+  <meta name="description" content="基础知识与c语言的小区别 1.c语言没有提供bool类型，c++有bool类型（true,false=0），以此类型输出需加boolalpha 2.两种初始化方法 int x=2 和int x(2),c++可以随用随定义 3.c语言用scanf输入，print输出；c++用cin输入，cout输出。（cout&amp;lt;&amp;lt;x&amp;lt;&amp;lt;endl;）,endl(类似于\n回车)；（cin&amp;gt">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++基础">
 <meta property="og:url" content="https:&#x2F;&#x2F;kangshiqi0112.github.io&#x2F;2020&#x2F;01&#x2F;04&#x2F;c++--%E5%9F%BA%E7%A1%80&#x2F;index.html">
 <meta property="og:site_name" content="my blog">
-<meta property="og:description" content="基础与c语言的小区别 1.c语言没有提供bool类型，c++有bool类型（true,false=0），以此类型输出需加boolalpha 2.两种初始化方法 int x=2 和int x(2),c++可以随用随定义 3.c语言用scanf输入，print输出；c++用cin输入，cout输出。（cout&amp;lt;&amp;lt;x&amp;lt;&amp;lt;endl;）,endl(类似于\n回车)；（cin&amp;gt;&amp;">
+<meta property="og:description" content="基础知识与c语言的小区别 1.c语言没有提供bool类型，c++有bool类型（true,false=0），以此类型输出需加boolalpha 2.两种初始化方法 int x=2 和int x(2),c++可以随用随定义 3.c语言用scanf输入，print输出；c++用cin输入，cout输出。（cout&amp;lt;&amp;lt;x&amp;lt;&amp;lt;endl;）,endl(类似于\n回车)；（cin&amp;gt">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-04T10:34:43.157Z">
+<meta property="og:updated_time" content="2020-01-11T07:23:54.059Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="my blog" type="application/atom+xml">
@@ -122,7 +122,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/aa/" style="font-size: 10px;">aa</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 10px;">语法</a>
+						<a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">笔记</a> <a href="/tags/%E7%BB%98%E5%9B%BE/" style="font-size: 10px;">绘图</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 15px;">语法</a>
 					</div>
 				</section>
 				
@@ -239,11 +239,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="与c语言的小区别"><a href="#与c语言的小区别" class="headerlink" title="与c语言的小区别"></a>与c语言的小区别</h2><ul>
+        <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="与c语言的小区别"><a href="#与c语言的小区别" class="headerlink" title="与c语言的小区别"></a>与c语言的小区别</h2><ul>
 <li>1.c语言没有提供bool类型，c++有bool类型（true,false=0），以此类型输出需加boolalpha</li>
 <li>2.两种初始化方法 int x=2 和int x(2),c++可以随用随定义</li>
 <li>3.c语言用scanf输入，print输出；c++用cin输入，cout输出。（cout&lt;&lt;x&lt;&lt;endl;）,endl(类似于\n回车)；（cin&gt;&gt;x&gt;&gt;y）</li>
 <li>4.八进制输出（cout&lt;&lt;oct&lt;&lt;x）,十进制（dec）,十六进制（hex）</li>
+<li>5.面向对象三大特征：封装、多态、继承</li>
 </ul>
 <h2 id="其他细节"><a href="#其他细节" class="headerlink" title="其他细节"></a>其他细节</h2><ul>
 <li>1.namespace(命名空间)，用来区分来自不同地方的相同名字的变量和函数等</li>
@@ -280,7 +281,104 @@ system("pause");//请按任意键继续。。。
 <li>5.c++中函数参数可以有默认值，但含有默认值的参数要放到后面，使用时最好函数声明时写上默认值，定义时不写，实参会覆盖默认值</li>
 <li>6.函数重载：在同一作用域中，函数名相同，函数参数不同</li>
 <li>7.内联函数inline：编译时将函数体代码和实参代替函数调用语句(声明：inline int max();)。递归函数无法使用内联函数，内联编译是建议性的，由编译器决定。逻辑简单、调用频繁的函数建议使用内联函数</li>
-<li>8.内存管理：内存的申请与释放（int *p=new int;int *arr=new int[10]//申请块内存）（delete p/[]p;p=null）（c中void *malloc()–void free()）<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2></li>
+<li>8.内存管理：内存的申请与释放（int *p=new int;int *arr=new int[10]//申请块内存）（delete p/[]p;p=null）（c中void *malloc()–void free()）</li>
+<li>9.String 类型 头文件(#include<string>) <ul>
+<li>初始化 string name=”dd”;string hobby(“football”);string s2(s1);string s4(n,’c’)//n个c;</li>
+<li>s.empty()//判断S是否为空串</li>
+<li>s.size()//返回s中字符的个数</li>
+<li>字符串连接中””+s1+””,s1+s2合法，但是””+””不合法</li>
+</ul>
+</string></li>
+<li>10.内存分区：栈区（变量，指针，由系统控制），堆区（new），全局区（存储全局变量及静态变量），常量区（string），代码区（存储逻辑代码的二进制）</li>
+</ul>
+<h2 id="封装（类与对象）"><a href="#封装（类与对象）" class="headerlink" title="封装（类与对象）"></a>封装（类与对象）</h2><ul>
+<li>1.类中访问限定符：public（公共），protected（受保护的），private（私有的）</li>
+<li>2.实例化对象：<ul>
+<li>从栈中实例化</li>
+<li>从堆中实例化</li>
+</ul>
+</li>
+</ul>
+<pre><code>/#include&lt;iostream&gt;// 内包含输入输出语法，但是它在空间std中
+using namespace std;
+class TV{
+public:
+    char name[20];
+    int type;
+
+    void changevol(){cout&lt;&lt;type&lt;&lt;endl;};
+    void power();
+};
+
+int main(){
+    TV tv;
+    TV tv1[20];//从栈中实例化对象
+    tv.type=0;
+    tv.changevol();//对象成员访问
+
+    TV *p=new TV();
+    TV *q=new TV[20];//从堆中实例化对象
+    if (NULL==p){
+    cout&lt;&lt;"申请失败"&lt;&lt;endl;
+    }
+    else{
+    p-&gt;type=1;
+    p-&gt;changevol();//对象成员的访问
+    delete p;
+    p=NULL;
+    delete []q;
+    q=NULL;
+    }
+    return 0;
+}</code></pre><ul>
+<li>3.通常将方法设为公有属性，将数据成员设为私有属性，以便封装数据成员（定义set,get方法除了可以保护数据，还可以对传入的数据做判断）</li>
+<li>4.类内定义，在类里定义的函数，编译器会优先将它们作为内联函数（inline）</li>
+<li>5.类外定义（函数体写在类外）<ul>
+<li>同文件类外定义（函数与类（car）在同一文件，void car::run(){}）</li>
+<li>分文件类外定义（推荐使用，car.h文件中写类，car.cpp文件中#include”car.h”和方法void car::run(){}）</li>
+</ul>
+</li>
+<li>6.对象初始化，有的数据只需要初始化一次，此时使用构造函数，对象会自动调用</li>
+<li>7.构造函数没有返回值，可以重载，且仅会被调用一次。当用户没有定义时，编译器会自动生成一个构造函数，构造函数名称与类名一致</li>
+<li>8.初始化列表（student():m_strname(“jim”),m_intAge(10){}）,只能用于构造函数，先于构造函数执行，可以给类中定义的常量（const）初始化赋值</li>
+<li>9.拷贝构造函数（student(const student&amp;stu){}）系统会自动生成（拷贝和普通系统只会生成一个）,当采用直接初始化或复制初始化实例对象时，系统自动调用拷贝构造函数</li>
+<li>10.析构函数（~类名(){}），对象销毁前自动调用，释放资源。没有自定义的话系统会自动生成，且不允许有参数</li>
+<li>11.浅拷贝，当出现指针时，会产生麻烦</li>
+<li>12.深拷贝，赋值时新建另一个堆，将每一个值都复制过去</li>
+<li>13.this指针，取当前对象的地址（*this是对象）</li>
+<li>14.常对象成员（初始化列表赋值）和常成员函数（不可修改成员的值，重载时只有常对象才能调用常成员函数，也只能调用常成员函数。普通对象都可调用）<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2></li>
+<li>1.公有继承（class A:public B{}）,B可以调用A中的属性和方法,继承时该是什么类型就是什么类型</li>
+<li>2.保护继承（class A:protected B{}），A中protected和public的成员被继承到B中后是protected类型</li>
+<li>3.私有继承（class A:private B{}），A中protected和public成员被继承到B中后是private类型</li>
+<li>4.无论哪种继承方式，A中私有属性的成员被继承到B中后处于不可见位置，B无法访问</li>
+<li>5.隐藏 子类与父类有同名函数时，从父类继承过来的函数（或数据成员）将被隐藏，但是可以通过特殊方式使用（对象.父类::函数（））</li>
+<li>6.虚析构函数（virtual~），父类使用虚析构函数，此时将子类赋值给父类定义的指针的情况下释放指针时不会遗漏子类的析构函数，否则会造成内存泄漏等问题</li>
+<li>7.多重继承（子孙关系），一个子类同时有多个父类称为多继承</li>
+<li>8.虚继承（：virtual public A()），多继承+多重继承时（菱形继承），子类继承父类时使用虚继承，可以使孙类减少冗余和出现重定义的问题<h2 id="多态（虚函数）"><a href="#多态（虚函数）" class="headerlink" title="多态（虚函数）"></a>多态（虚函数）</h2></li>
+<li>1.多态：相同对象收到不同消息或不同对象收到相同消息时产生不同的动作</li>
+<li>2.静态多态（早绑定），通常为函数重载</li>
+<li>3.动态多态，以封装和继承为基础，父类指针指向子类对象，通过父类指针完成动作（父类的成员函数为虚函数才行）</li>
+<li>4.普通函数、静态成员函数（static）、内联函数、构造函数不能是虚函数</li>
+<li>5.函数覆盖 虚函数继承后，子类的虚函数表中的内容会覆盖父类中的同名内容，实现多态</li>
+<li>6.纯虚函数（virtual double A()=0;）,含有纯虚函数的类为抽象类，抽象类无法实例化对象</li>
+<li>7.接口类：仅含有纯虚函数的类</li>
+<li>8.RTTI（运行时类型识别）（typeid(<em>obj).name();typeid(*obj)==typeid(类名);Bird *bird=dynamic_cast&lt;Bird</em>&gt;(obj);注：只能用于指针或引用的转换）</li>
+<li>9.举例 try{f1()}…catch（int/…）{}      f1(){throw 1 }抛出异常</li>
+<li>10.常见的异常：数组下标越界、除数为0、内存不足<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2></li>
+<li>1.友元函数(friend),容易破坏封装性</li>
+<li>2.友元关系不能传递，友元关系的单向性</li>
+<li>3.静态数据成员/成员函数（static），实例化之前就存在，可以通过类使用，静态成员函数无法调用非静态数据成员，因为没有传默认的this指针</li>
+<li>4.运算符重载（类中 对-重载：类名&amp; operator-();-对象名();）,-(取反),++,–</li>
+<li>5.二元运算符重载，A&amp; operator+(A &amp;a1,A &amp;a2);friend ostream&amp; operator&lt;&lt;(ostream &amp;out,const A &amp;a1);int operator[](int index);</li>
+<li>6.函数模板 template&lt;typename T,int n&gt;void dispaly(T a){…cout&lt;&lt;n}   dispaly<int>(10);</int></li>
+<li>7.类模板 template<class t="">class A{public:dispaly();}private:T *m_pArr;template<class t="">void A<t>::display(){};A<int>arr;</int></t></class></class></li>
+<li>8.模板代码不能分离编译，即不能分成.h文件</li>
+<li>9.c++标准模板库（STL）<ul>
+<li>vector 向量（对数组的封装）：vector<t> v1;empty();begin();end();clear();front();back();size()…（迭代器interator）</t></li>
+<li>list 链表（数据插入速度快）</li>
+<li>map 映射（key–value）</li>
+</ul>
+</li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -308,6 +406,15 @@ system("pause");//请按任意键继续。。。
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/01/11/MySQL%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          mysql 基础
+        
+      </div>
+    </a>
   
   
     <a href="/2019/12/12/Numpy--%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%9F%BA%E7%A1%80%E9%98%B6%E6%AE%B5%E7%94%A8%E5%88%B0%E7%9A%84%E5%BA%93%EF%BC%88%E4%BA%8C%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
